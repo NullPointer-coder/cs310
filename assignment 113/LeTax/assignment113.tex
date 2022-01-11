@@ -1,0 +1,172 @@
+\documentclass[11pt]{article}
+\newcommand{\name}{Jingbo Wang} % <=== PUT YOUR NAME HERE
+
+\usepackage[paper=letterpaper, margin=1in, headheight=13.6pt]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\name{}}
+\cfoot{Page \thepage}
+
+\usepackage[parfill]{parskip}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{upquote}
+
+\newcommand{\problem}[1]{\vspace*{2ex}\textbf{Problem #1 ---} }
+\newcommand{\answer}{\textit{Answer: }}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+{\large CS 310}\\
+Assignment 113\\
+\today
+\end{center}
+
+\begin{flushright}
+\name{}
+\end{flushright}
+
+\problem{1} Algorithms often have the following properties:
+
+\begin{itemize}
+\item the steps are stated \emph{unambiguously} so that there is
+  no question how the algorithm proceeds
+\item the algorithm is \emph{deterministic} so that repeating the
+  algorithm on the same input produces the same output
+\item the algorithm is \emph{finite} because it terminates after a
+  finite number of steps have been performed
+\item the algorithm produces \emph{correct} output for a given input
+\end{itemize}
+
+For the following algorithm, for each property listed above, determine
+whether the algorithm exhibits this property:
+
+\begin{Verbatim}[numbers=left,xleftmargin=5mm]
+unsigned max3(unsigned a, unsigned b, unsigned c)
+{
+  unsigned result = a;
+  if (b > result)
+  {
+    result = b;
+  }
+  if (c > result)
+  {
+    result = c;
+  }
+  return result;
+}
+\end{Verbatim}
+
+\answer This algorithm is unambiguous because the syntax for the
+operations is well-understood.  It is deterministic because it always
+produces the same output for a given input.  It is finite because the
+number of lines of code executed (including the header) is strictly
+between 3 and 7 inclusive.  It is correct because for all possible
+valid input combinations it does in fact return a value equal to the
+maximum input value.
+
+\problem{2} Repeat problem 1 for the following algorithm.  This
+algorithm empirically checks the correctness of Goldbach's conjecture,
+which states (in a modern interpretation) that every even number
+greater than 2 is the sum of two prime numbers.  Assume
+\verb.has_prime_addends. is a valid function that correctly determines
+whether its argument has two prime addends.
+
+\begin{Verbatim}[numbers=left,xleftmargin=5mm]
+bool goldbach()
+{
+  unsigned value = 4;
+  bool ok = true;
+  while (ok)
+  {
+    if (!has_prime_addends(value))
+    {
+      ok = false;
+    }
+    else
+    {
+      value += 2;
+    }
+  }
+  return ok;
+}
+\end{Verbatim}
+
+\answer This algorithm is unambiguous because the syntax for the
+operations is well-understood. It is not deterministic because it does not
+produce any output for a given input. It is not finite because the algorithm only runs lines 11 - 14 in the while loop, and  "ok" value is always true, it cannot stop. It is not correct because this algorithm cannot give any Boolean value.
+
+\problem{3} What is the hexadecimal representation of $724_{10}$?
+
+\answer The first few powers of 16 are:
+
+\begin{align*}
+16^0 &= 1\\
+16^1 &= 16\\
+16^2 &= 256\\
+16^3 &= 4096\\
+\end{align*}
+
+Thus we have:
+
+\begin{equation*}
+\begin{split}
+724&\\
+\underline{-2 \times 256 = 512}&\\
+212&\\
+\underline{-13 \times 16 = 208}&\\
+4&\\
+\underline{-4 \times 1 = 4}&\\
+0&
+\end{split}
+\end{equation*}
+
+And thus we have $724_{10} = 2d4_{16}$.
+
+\problem{4} Based on the hexadecimal value found in the previous
+solution, what is the binary representation of $724_{10}$?
+
+\answer Because we have $2d4_{16}$, it is easy to know that:
+
+\begin{align*}
+2_{16} &= 0010_{2}\\
+d_{16} &= 1101_{2}\\
+4_{16} &= 0100_{2}\\
+\end{align*}
+
+Thus we have:
+
+\begin{equation*}
+\begin{split}
+2d4_{16} = 001011010100_{2}
+\end{split}
+\end{equation*}
+
+And thus we have $724_{10} = 001011010100_{2}$.
+
+\problem{5} What is the decimal representation of \texttt{0x2b3a}?
+
+\answer It is easy to know that:
+\begin{equation*}
+\begin{split}
+a_{16} &= 10_{10}\\
+b_{16} &= 11_{10}
+\end{split}
+\end{equation*}
+
+Thus we have:
+
+\begin{equation*}
+\begin{split}
+  &10 \times 16^0 + 3 \times 16^1 + 11 \times 16^2 + 2 \times 16^3\\
+= &10 + 48 + 2816 + 8192\\
+= &11066\\
+\end{split}
+\end{equation*}
+
+
+\end{document}

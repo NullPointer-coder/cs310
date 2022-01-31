@@ -63,7 +63,7 @@ int main(int argc, char **argv)
 
 void foo(vector<unsigned>& array)
  {
-  unsigned count = 0;
+  uint64_t count = 0;
   size_t n = array.size();
   count++;   // argument n
   for (size_t start = 0; start < n - 1; start++)
@@ -77,25 +77,25 @@ void foo(vector<unsigned>& array)
     for (size_t index = start + 1; index < n; index++)
     {
       count += 2;  // for loop header
+
       if (array.at(index) < item)
       {
         position++;
         count++;  // position++
       }
-      count++; // if statement header
+      count += 2; // if statement header
     }
     count += 2;  // last time for loop
 
-    count++;  // if statement header
     if (position != start)
     {
       while (item == array.at(position))
       {
-        count++;  //while statement header
+        count += 2 ;  //while statement header
         position++;
         count++;  // position++
       }
-      count++;  // while statement header
+      count += 2 ;  // while statement header
 
       swap(array.at(position), item);
       count += 2;  // swap fuction
@@ -107,7 +107,7 @@ void foo(vector<unsigned>& array)
         count++;  // count++ for position
         for (size_t index = start + 1; index < n; index++)
         {
-          count+= 2;  // for loop
+          count += 2;  // for loop
           if (array.at(index) < item)
           {
             position++;
@@ -115,21 +115,22 @@ void foo(vector<unsigned>& array)
           }
           count++;  // if statement header
         }
-        count += 2; // last timefor loop
+        count += 2; // last time for loop
 
         while (item == array.at(position))
         {
-          count++;  // while statement header
+          count += 2 ;   // while statement header
           position++;
           count++;  // position++
         }
-       count++; // while statement header
+        count += 2 ;  // while statement header
 
         swap(array.at(position), item);
-        count +=2;  // swap fuction
+        count += 2;  // swap fuction
       }
       count++; // while statement header
     }
+    count++;  // if statement header
   }
   count += 2;  // last tme for loop
 

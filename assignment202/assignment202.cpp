@@ -10,8 +10,8 @@
 using namespace std;
 
 /**
- * The purpose of foo here
- * @param array write stuff here
+ * sort a unordered vector
+ * @param array the random created unsigned variables vector
  */
 void foo(vector<unsigned> &array);
 
@@ -39,18 +39,6 @@ int main(int argc, char **argv)
     values.push_back(generator(get_next_value));
   }
 
-/*
-  values.push_back(10);
-  values.push_back(9);
-  values.push_back(8);
-  values.push_back(7);
-  values.push_back(11);
-  values.push_back(5);
-  values.push_back(4);
-  values.push_back(3);
-  values.push_back(2);
-  values.push_back(1);
-  */
   foo(values);
 
   for (auto v : values)
@@ -58,6 +46,7 @@ int main(int argc, char **argv)
     cout << v << ' ';
   }
   cout << endl;
+
   return 0;
 }
 
@@ -70,20 +59,19 @@ void foo(vector<unsigned>& array)
   {
     count += 2;  // for loop header
     unsigned item = array.at(start);
-    count++;   // argument item
+    count += 2;   // argument item
     size_t position = start;
     count++;  // argument position
 
     for (size_t index = start + 1; index < n; index++)
     {
       count += 2;  // for loop header
-
       if (array.at(index) < item)
       {
         position++;
         count++;  // position++
       }
-      count += 2; // if statement header
+      count += 2;  // if statement header
     }
     count += 2;  // last time for loop
 
@@ -104,7 +92,7 @@ void foo(vector<unsigned>& array)
       {
         count++;  //while statement
         position = start;
-        count++;  // count++ for position
+        count++;  // position++
         for (size_t index = start + 1; index < n; index++)
         {
           count += 2;  // for loop
@@ -113,7 +101,7 @@ void foo(vector<unsigned>& array)
             position++;
             count++;  // position++
           }
-          count++;  // if statement header
+          count += 2;  // if statement header
         }
         count += 2; // last time for loop
 

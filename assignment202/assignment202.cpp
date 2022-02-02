@@ -3,6 +3,7 @@
  * @brief  This program is
  * @date 2022-01-29
  */
+
 #include <chrono>
 #include <iostream>
 #include <random>
@@ -10,7 +11,7 @@
 using namespace std;
 
 /**
- * sort a unordered vector
+ * sort a randomly created unordered vector
  * @param array the random created unsigned variables vector
  */
 void foo(vector<unsigned> &array);

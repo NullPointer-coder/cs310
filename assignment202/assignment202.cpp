@@ -80,11 +80,11 @@ void foo(vector<unsigned>& array)
     {
       while (item == array.at(position))
       {
-        count += 2 ;  //while statement header
+        count += 2;  //while statement header
         position++;
         count++;  // position++
       }
-      count += 2 ;  // while statement header
+      count += 2;  // while statement header
 
       swap(array.at(position), item);
       count += 2;  // swap fuction
@@ -108,7 +108,7 @@ void foo(vector<unsigned>& array)
 
         while (item == array.at(position))
         {
-          count += 2 ;   // while statement header
+          count += 2;   // while statement header
           position++;
           count++;  // position++
         }

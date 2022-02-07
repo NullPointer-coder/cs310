@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+\newcommand{\name}{Jingbo Wang} % <=== PUT YOUR NAME HERE
+
+\usepackage[paper=letterpaper, margin=1in, headheight=13.6pt]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\name{}}
+\cfoot{Page \thepage}
+
+\usepackage[parfill]{parskip}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{fancyvrb}
+
+\newcommand{\answer}[1]{\vspace*{2ex}\textit{Answer #1: } }
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+{\large CS 310}\\
+Test 1\\
+\end{center}
+
+\begin{flushright}
+\name{}
+\end{flushright}
+
+\answer{1(b)} I would prefer to use program \verb.g. because its
+output growth slower when the input size is big.
+
+\answer{2} In order to prove this, we must find $c$ and $n_0$ such that
+ 
+\begin{center}
+    2n + 5 \leq cn\\
+   2+$\frac{5}{n}$ \leq c \\
+   When \ $n_o$ = 1, (2+$\frac{5}{n}$) \ have max value \\
+   Max(2+$\frac{5}{n}$) = 7 \\
+   7 \leq c\\
+   So, \ c = 7\\
+   Therefore, \ T(n) \in O(n), when \ c = 7, $n_0$ = 1 \\
+\end{center}
+
+\answer{3} The approximate base-2 logarithm of 500,000 is $2^{19}$.  This
+is derived as follows:
+\begin{align*}
+    500000 &= 500 \times 10^3 \\
+           &= 2^9 \times 2^{10} \\
+           &= 2^{19} \\
+\end{align*}
+
+\answer{4(a)} Here, $f$ is an upper bound of $g$ because n! growth faster 
+than $2^n$ when input size is huge.
+
+\answer{4(b)} Here, $f$ is an upper bound of $g$ because $n^3$ is 
+lager than $n^2$ when input size is huge.
+
+\answer{4(c)} Here, $g$ is an upper bound of $f$ because $\log 2n = 
+\log 2 + \log n < \log n$.
+
+\answer{5} We consider the input size to be foo.  The operations are
+counted as follows.
+
+\begin{itemize}
+\item Line 3: one operation regardless of the input size
+\item Line 8: a vector of a specific size can be allocated in one
+  operation
+\item Line 9: one operation, an array element assignment
+\item Line 10: one operation, an array element assignment
+\item Line 11: for loop statement, runs $n - 1$ times and one last 
+               time, two operations for each times $2(n - 1) + 2 
+               = 2n$ operations.
+\item Line 10: four operations for each, it runs $n - 1$ times, so 
+             $4(n-1) =4n - 4$ operations
+
+\end{itemize}
+
+Adding up all the values, we get the number of operations;
+
+When is best case, it means Line 3 is true, and it return 0:
+\begin{center}
+     T(n) = 1 
+\end{center}
+   
+When is worst case, it means Line 3 is false, and it return 0:
+\begin{align*}
+T(n) &= 1 + 1 + 1 + 1 + 2n + (4n - 4)\\
+     &= 6n
+\end{align*}
+
+Therefore, we conclude that the overall analysis is
+
+\begin{align*}
+T(n) &\in O(n)\\
+     &\in \Omega(1)
+\end{align*}
+
+
+\end{document}

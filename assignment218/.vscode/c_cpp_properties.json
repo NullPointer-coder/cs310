@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [],
+            "compilerPath": "/usr/bin/clang++",
+            "intelliSenseMode": "macos-clang-x64",
+            "compilerArgs": [
+                "-pedantic-errors",
+                "-Weverything",
+                "-Wno-poison-system-directories",
+                "-Wno-c++98-compat",
+                "-std=c++11"
+            ],
+            "cStandard": "c89",
+            "cppStandard": "c++11"
+        }
+    ],
+    "version": 4
+}

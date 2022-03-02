@@ -1,0 +1,7 @@
+I also use two \texttt{clock\_t} elements to test running time. I
+assign a value \texttt{start} before Line 1 to get the starting time,
+and a \texttt{end} value after Line 14 to get ending time. \newline
+\texttt{double running\_time = (end - start) / CLOCKS\_PER\_SEC}
+to get the running time. Using \newline \texttt{fixed} and
+\texttt{showpoint}, I get result is $0.000000\ s \ll 1\ s$. Thus, it
+works.

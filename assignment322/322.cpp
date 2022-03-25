@@ -37,7 +37,7 @@ int main(int argc, char** argv)
     avl.insert(value);
   }
 
-  cerr << number_of_values << ' ' << avl.height() << endl;
-  avl.print_tree();
+ cerr << number_of_values << ' ' << avl.height() << endl;
+ avl.print_tree();
   return 0;
 }

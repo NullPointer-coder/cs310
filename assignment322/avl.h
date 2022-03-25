@@ -266,16 +266,40 @@ class AVLTree
     p = orig_right;
   }
 
+  /**
+   * Perform an LL rotation on a node
+   * @param p the node on which to rotate
+   */
   void rotateLL(AVL_node*& p)
   {
+    AVL_node *orig_left = p->left;
+    p->left = orig_left->right;
+    orig_left->right = p;
+    p->height = std::max(height(p->right), height(p->left)) + 1;
+    orig_left->height = std::max(height(orig_left->right), p->height) + 1;
+    p = orig_left;
   }
 
+  /**
+   * Perform an LR rotation on a node
+   * @param p the node on which to rotate
+   */
   void rotateLR(AVL_node*& p)
   {
+    AVL_node *temp_p = p;
+    rotateRR(temp_p->left);
+    rotateLL(p);
   }
 
+  /**
+   * Perform an RL rotation on a node
+   * @param p the node on which to rotate
+   */
   void rotateRL(AVL_node*& p)
   {
+    AVL_node *temp_p = p;
+    rotateLL(temp_p->right);
+    rotateRR(p);
   }
 };
 

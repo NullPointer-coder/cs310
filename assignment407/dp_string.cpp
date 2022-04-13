@@ -91,10 +91,9 @@ int main(int argc, char** argv)
 int opt(const string& s, size_t i, const string& t, size_t j,
         Matrix<int>& memo, int match, int mismatch, int gap)
 {
-    if (i == 0 && j > 0)
-    {
-        memo.at(i, j) = opt(s, i, t, j - 1, memo, match, mismatch, gap)
-                                     + gap;
+  if (i == 0 && j > 0)
+  {
+    memo.at(i, j) = opt(s, i, t, j - 1, memo, match, mismatch, gap) + gap;
     }
     else if (j == 0 && i > 0)
     {
@@ -119,10 +118,10 @@ int opt(const string& s, size_t i, const string& t, size_t j,
                           + mismatch;
       }
       memo.at(i, j) = max(value1,
-                                             max(opt(s, i, t, j - 1, memo,
-                                                              match, mismatch, gap)+ gap,
-                                        opt(s, i - 1, t, j, memo, match, mismatch, gap)
-                                                + gap));
+                                       max(opt(s, i, t, j - 1, memo,
+                                              match, mismatch, gap)+ gap,
+                                              opt(s, i - 1, t, j, memo,
+                                              match, mismatch, gap)  + gap));
   }
   return memo.at(i, j);
 }
@@ -130,41 +129,45 @@ int opt(const string& s, size_t i, const string& t, size_t j,
 void traceback(const Matrix<int>& memo, const string& s, const string& t,
                            int gap)
  {
-    string temp_s = s;
-    string temp_t = t;
-    size_t i = temp_s.size() - 1;
-    size_t j = temp_t.size() - 1;
-    while (i != 0 && j != 0)
+  string temp_s = s;
+  string temp_t = t;
+  size_t i = temp_s.size() - 1;
+  size_t j = temp_t.size() - 1;
+
+  while (i != 0 ||  j != 0)
+  {
+    if (i == 0 && j != 0)
     {
-      if( memo.at(i, j) - gap == memo.at(i - 1, j)
-          && memo.at(i, j) - gap == memo.at(i , j - 1))
-      {
-        temp_t.insert(j + 1, "-");
-        i--;
-      }
-      else if (memo.at(i, j) - gap == memo.at(i - 1, j)
-                    && memo.at(i, j) - gap != memo.at(i , j - 1))
-      {
-        temp_t.insert(j + 1, "-");
-        i--;
-      }
-      else if (memo.at(i, j) - gap != memo.at(i - 1, j)
-                    &&  memo.at(i, j) - gap == memo.at(i , j - 1))
-      {
-        temp_s.insert(i + 1, "-");
-        j--;
-      }
-      else if (memo.at(i, j) - gap != memo.at(i - 1, j)
-                    && memo.at(i, j) - gap != memo.at(i , j - 1))
-      {
-        i--;
-        j--;
-      }
+      temp_s.insert(i + 1, "-");
+      j--;
     }
-    cout << "The aligned strings:" << endl;
-    cout  << temp_s.erase(0, 1) << endl;
-    cout << temp_t.erase(0, 1) << endl;
+    else if (j == 0 && i != 0)
+    {
+      temp_t.insert(j + 1, "-");
+      i--;
+    }
+    else if ( memo.at(i, j) - gap == memo.at(i - 1, j))
+    {
+      temp_t.insert(j + 1, "-");
+      i--;
+    }
+    else if (memo.at(i, j) - gap == memo.at(i , j - 1))
+    {
+      temp_s.insert(i + 1, "-");
+      j--;
+    }
+    else if (memo.at(i, j) - gap != memo.at(i - 1, j)
+                  && memo.at(i, j) - gap != memo.at(i , j - 1))
+    {
+      i--;
+      j--;
+    }
+  }
+  cout << "The aligned strings:" << endl;
+  cout  << temp_s.erase(0, 1) << endl;
+  cout << temp_t.erase(0, 1) << endl;
  }
+
 void print_memo(const Matrix<int>& memo, const string& s, const string& t)
 {
   int field_width = 6;
